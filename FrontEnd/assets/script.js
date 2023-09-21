@@ -24,3 +24,11 @@ async function loadWorks() {
     
 }
 loadWorks()
+
+//add a function to load the categories from the API
+async function loadCategories() {
+    const responseCategories = await fetch(`http://localhost:5678/api/categories`);
+    const categories = await responseCategories.json();
+    console.log(responseCategories)
+}
+loadCategories()
