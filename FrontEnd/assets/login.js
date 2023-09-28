@@ -4,8 +4,7 @@ form.addEventListener("submit", (event) => {
     // add the preventDefault() method
     event.preventDefault();
 
-    redirection()
-    
+    redirection()    
 });
 // add function redirection with test account
 function redirection() {
