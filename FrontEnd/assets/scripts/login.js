@@ -3,9 +3,9 @@ const form = document.querySelector('form');
 form.addEventListener("submit", (event) => {
     // add the preventDefault() method
     event.preventDefault();
-
     redirection()    
 });
+
 // add function redirection with test account
 function redirection() {
     let baliseEmail = document.getElementById("email")
@@ -19,6 +19,6 @@ function redirection() {
         window.location.href="index.html"
     }
     else {
-        alert("Nom d'utilisateur ou mot de passe incorrect.")
+        alert("Erreur dans l’identifiant ou le mot de passe")
     }
 }

@@ -1,7 +1,17 @@
-#portfolio h2 {
-	text-align: center;
-	margin-bottom: 1em;
+.portfolio_header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 2em;
 }
+.portfolio_header .modification{
+	display: none;
+	margin-left: 20px;
+}
+.active {
+    display: flex !important;
+}
+
 
 .gallery {
 	width: 100%;
