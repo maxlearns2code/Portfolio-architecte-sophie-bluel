@@ -14,10 +14,8 @@ async function redirection() {
     let baliseMdp = document.getElementById("pass")
     let passwordValue = baliseMdp.value
 
-    console.log(emailValue, passwordValue)
-
     // add fetch API to validate authentification
-    const response = fetch("http://localhost:5678/api/users/login", {
+    const response = await fetch("http://localhost:5678/api/users/login", {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -25,12 +23,17 @@ async function redirection() {
             password: passwordValue
         })
     })
-    console.log(response)
 
-    if ( (await response).statusText === "OK") {
-        window.location.href="index.html"
+    if ( response.statusText === "OK") {
+        //save token
+        const result = await response.json()
+        window.localStorage.setItem("token", result.token)
+        //redirection
+        window.location = "index.html";
+        
     }
     else {
+        //alert
         alert("Erreur dans l’identifiant ou le mot de passe")
     }  
 }
