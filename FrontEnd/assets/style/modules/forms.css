@@ -30,6 +30,7 @@
 
 #login {
 	width: 33%;
+	height: 100vh;
 	margin: auto;
 }
 #login > * {

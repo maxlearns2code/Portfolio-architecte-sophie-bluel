@@ -1,4 +1,4 @@
-const form = document.querySelector('form');
+const form = document.querySelector("form");
 
 form.addEventListener("submit", (event) => {
     // add the preventDefault() method
@@ -6,19 +6,31 @@ form.addEventListener("submit", (event) => {
     redirection()    
 });
 
-// add function redirection with test account
-function redirection() {
+// add function redirection by API
+async function redirection() {
     let baliseEmail = document.getElementById("email")
-    let email = baliseEmail.value
+    let emailValue = baliseEmail.value
 
     let baliseMdp = document.getElementById("pass")
-    let pass = baliseMdp.value
+    let passwordValue = baliseMdp.value
 
-    // the redirection works if the login is correct
-    if (email === "sophie.bluel@test.tld" && pass === "S0phie") {
+    console.log(emailValue, passwordValue)
+
+    // add fetch API to validate authentification
+    const response = fetch("http://localhost:5678/api/users/login", {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            email: emailValue,
+            password: passwordValue
+        })
+    })
+    console.log(response)
+
+    if ( (await response).statusText === "OK") {
         window.location.href="index.html"
     }
     else {
         alert("Erreur dans l’identifiant ou le mot de passe")
-    }
+    }  
 }
