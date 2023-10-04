@@ -1,6 +1,9 @@
 function showModification () {
-    const modification = document.querySelector(".modal")
-    modification.classList.add("active")
+    const modification = document.querySelector(".modification")
+    const elementsModification = document.createElement(".div")
+    elementsModification.innerHTML = `<img src=""./assets/icons/modifier.svg" alt="Modifier"><p>"Modifier"</p>`
+
+    modification.appendChild(imgModification)
 }
 
 function showModal() {

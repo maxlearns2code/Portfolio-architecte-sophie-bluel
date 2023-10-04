@@ -29,7 +29,7 @@ async function redirection() {
         const result = await response.json()
         window.localStorage.setItem("token", result.token)
         //redirection
-        window.location = "index.html";
+        window.location = "index.html"
         
     }
     else {
