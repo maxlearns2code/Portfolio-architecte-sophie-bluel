@@ -1,17 +1,19 @@
-.portfolio_header {
+.portfolioHeader {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-bottom: 2em;
+	margin-bottom: 70px;
+	margin-left: 30px;
 }
-.portfolio_header .modification{
-	display: none;
-	margin-left: 20px;
+.portfolioHeader div{
+	display: flex;
+	flex-direction: row;
+	margin-left: 30px;
 }
-.active {
-    display: flex !important;
+.portfolioHeader p {
+	margin-top: 10px;
+	margin-left: 10px;
 }
-
 
 .gallery {
 	width: 100%;

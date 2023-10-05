@@ -88,3 +88,29 @@ function resetFilter() {
         loadWorks()
     })
 }
+
+if(window.localStorage.getItem("token") !== null) {
+    const loginBtn = document.querySelector(".login")
+
+    loginBtn.innerHTML = "logout";
+
+    document.querySelector(".filters").style.display = "none";
+
+    const portfolioHeader = document.querySelector(".portfolioHeader")
+
+    const elementsEdit = document.createElement("div")
+    elementsEdit.innerHTML =`<img src="./assets/icons/edit.svg" alt="Modifier"><p>Modifier</p>`
+    portfolioHeader.appendChild(elementsEdit)
+    
+    loginBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        window.localStorage.removeItem('token');
+        window.location = "index.html";
+    })
+
+    const editBtn = document.querySelector(".portfolioHeader div")
+    editBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        document.querySelector(".modal").style.display = "flex";        
+    })
+}
