@@ -34,6 +34,7 @@
 
 .modal-wrapper form {
     display: flex;
+    flex-direction: column;
     align-items: center;
     width: 60%;
     margin-bottom: 20px;
@@ -48,4 +49,38 @@
     position: absolute;
     top: 20px;
     right: 20px;
+}
+.arrow-left {
+    position: absolute;
+    top: 22px;
+    left: 22px;
+}
+
+.insert-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 170px;
+    color: #306685;
+    background-color: #E8F1F6;
+}
+
+
+.add-picture {
+    width: 176px;
+    height: 23px;
+    font-weight: 500;
+    border: 1px solid #CBD6DC;
+    border-radius: 50px;
+    color: #306685;
+    background: #CBD6DC;
+    margin-top: 10px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.insert-img p {
+    margin: 10px;
 }

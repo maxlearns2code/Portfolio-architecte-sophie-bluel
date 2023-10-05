@@ -108,9 +108,17 @@ if(window.localStorage.getItem("token") !== null) {
         window.location = "index.html";
     })
 
-    const editBtn = document.querySelector(".portfolioHeader div")
-    editBtn.addEventListener('click', (event) => {
+    const openModal = document.querySelector(".portfolioHeader div")
+    openModal.addEventListener('click', (event) => {
         event.preventDefault();
-        document.querySelector(".modal").style.display = "flex";        
+        document.querySelector(".modal").style.display = "flex";
+       
+
+    })
+
+    const closeModal = document.querySelector(".modal .xmark")
+    closeModal.addEventListener('click', (event) => {
+        event.preventDefault();
+        document.querySelector(".modal").style.display = "none";        
     })
 }
