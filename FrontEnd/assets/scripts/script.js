@@ -89,6 +89,8 @@ function resetFilter() {
     })
 }
 
+
+
 if(window.localStorage.getItem("token") !== null) {
     const loginBtn = document.querySelector(".login")
 
@@ -108,25 +110,66 @@ if(window.localStorage.getItem("token") !== null) {
         window.location = "index.html";
     })
 
-    const openModal = document.querySelector(".portfolioHeader div")
-    openModal.addEventListener("click", (event) => {
-        event.preventDefault()
-        const modal1=document.querySelector("#modal1")
-        modal1.style.display = null
-        modal1.removeAttribute("aria-hidden")
-        modal1.setAttribute("aria-modal", true)
-        console.log(openModal)
-    })
 
-    const closeModal = document.querySelector(".modal .xmark")
-    closeModal.addEventListener("click", (event) => {
-        event.preventDefault()
-        const modal1=document.querySelector("#modal1")
-        modal1.style.display = "none"
-        modal1.setAttribute("aria-hidden", true)
-        modal1.removeAttribute("aria-modal")
-        openModal.addEventListener("click", () => {    
+    const focusableSelector = "button, a, input, textarea, img"
+    let focusables = []
+
+    function openModal() {
+        const openModal = document.querySelector(".portfolioHeader div")
+        openModal.addEventListener("click", (event) => {
+            event.preventDefault()
+            const modal1=document.querySelector("#modal1")
+            focusables = Array.from(modal1.querySelectorAll(focusableSelector))
+            modal1.style.display = null
+            modal1.removeAttribute("aria-hidden")
+            modal1.setAttribute("aria-modal", true)
+            console.log(openModal)
         })
-        console.log(closeModal)
+    }
+    openModal()
+
+    function closeModal() {
+        const closeModal = document.querySelector(".modal .xmark")
+        closeModal.addEventListener("click", (event) => {
+            event.preventDefault()
+            const modal1=document.querySelector("#modal1")
+            modal1.style.display = "none"
+            modal1.setAttribute("aria-hidden", true)
+            modal1.removeAttribute("aria-modal")
+            const openModal = document.querySelector(".portfolioHeader div")
+            openModal.removeEventListener("click", () => {    
+            })
+            console.log(closeModal)
+        })
+    }
+    closeModal()
+
+    const focusInModal = function (event) {
+        event.preventDefault()
+        let index = focusables.findIndex(f => f === modal1.querySelector(":focus"))
+        if (event.shiftKey === true) {
+            index--
+        }
+        else {
+            index++
+        }        
+        if (index >= focusables.length) {
+            index = 0
+        }
+        if (index < 0 ) {
+            index = focusables.length - 1
+        }
+        focusables[index].focus()
+        console.log(index)
+
+    }
+
+    window.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" || event.key === "Esc") {
+            closeModal(event)
+        }
+        if (event.key === "Tab" && modal1 !== null) {
+            focusInModal(event)
+        }
     })
 }

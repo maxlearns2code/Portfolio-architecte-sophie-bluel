@@ -1,3 +1,7 @@
+*:focus {
+    box-shadow: 0 0 10px blue;
+}
+
 .modal {
     position: fixed;
     display: flex;
@@ -84,3 +88,4 @@
 .insert-img p {
     margin: 10px;
 }
+
