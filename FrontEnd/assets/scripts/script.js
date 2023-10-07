@@ -109,16 +109,24 @@ if(window.localStorage.getItem("token") !== null) {
     })
 
     const openModal = document.querySelector(".portfolioHeader div")
-    openModal.addEventListener('click', (event) => {
-        event.preventDefault();
-        document.querySelector(".modal").style.display = "flex";
-       
-
+    openModal.addEventListener("click", (event) => {
+        event.preventDefault()
+        const modal1=document.querySelector("#modal1")
+        modal1.style.display = null
+        modal1.removeAttribute("aria-hidden")
+        modal1.setAttribute("aria-modal", true)
+        console.log(openModal)
     })
 
     const closeModal = document.querySelector(".modal .xmark")
-    closeModal.addEventListener('click', (event) => {
-        event.preventDefault();
-        document.querySelector(".modal").style.display = "none";        
+    closeModal.addEventListener("click", (event) => {
+        event.preventDefault()
+        const modal1=document.querySelector("#modal1")
+        modal1.style.display = "none"
+        modal1.setAttribute("aria-hidden", true)
+        modal1.removeAttribute("aria-modal")
+        openModal.addEventListener("click", () => {    
+        })
+        console.log(closeModal)
     })
 }
