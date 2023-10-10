@@ -34,6 +34,12 @@ async function redirection() {
     }
     else {
         //alert
-        alert("Erreur dans l’identifiant ou le mot de passe")
+        const alert = document.querySelector(".alert")
+        alert.style.display = null
+        const alertBtn = document.querySelector(".alertBtn")
+        alertBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+            window.location = "login.html";
+        })
     }  
 }

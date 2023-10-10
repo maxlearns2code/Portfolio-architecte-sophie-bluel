@@ -58,3 +58,21 @@
 #login label {
 	margin: 2em 0 1em 0;
 }
+#login .alert {
+	margin-top: 30px;
+	padding: 10px;
+	border: 2px solid red;
+}
+#login .alert p {
+	color: red;
+	font-weight: 700;
+	
+}
+#login .alert button {
+	margin-top: 10px;
+	padding: 5px 15px 5px 15px;
+	background-color: red;
+	border: 1px solid red;
+	border-radius: 60px;
+	font-weight: 700;
+}
