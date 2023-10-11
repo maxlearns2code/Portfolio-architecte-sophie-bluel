@@ -75,6 +75,12 @@ function showProjects (work,filter=false) {
     const article = document.createElement("figure");
     article.innerHTML = `<img src="${work.imageUrl}" max-width="608" max-height="814" alt="${work.title}"><figcaption>${work.title}</figcaption>`
     showWorks.appendChild(article);
+
+    const showWorksInModal = document.querySelector(".modal-projects")
+
+    const articleInModal = document.createElement("figure");
+    articleInModal.innerHTML = `<img src="${work.imageUrl}" max-width="77" max-height="103" alt="${work.title}">`
+    showWorksInModal.appendChild(articleInModal);
 }
 
 //add a function to reset the filters
