@@ -24,7 +24,7 @@ async function redirection() {
         })
     })
 
-    if ( response.statusText === "OK") {
+    if ( response.ok) {
         //save token
         const result = await response.json()
         window.localStorage.setItem("token", result.token)

@@ -68,32 +68,29 @@
 
 <aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="titlemodal" style="display:none;">
 	<div class="modal-wrapper" >
-
-		<button>0</button>
 		<div class="modal-header">
 			<p id="titlemodal" >Galerie photo</p>
-			<img src="./assets/icons/xmark.svg" alt="xmark" class="xmark">
+			<button class="xmark xmark1"><img src="./assets/icons/xmark.svg" alt="xmark"></button>
 		</div>
-		<button>1</button>
 		<div class="modal-projects">
 		</div>
-		<button>2</button>
-		<form>
+		<button class="submitBtn">
 			<input type="submit" value="Ajouter une photo" class="addPictureBtn">
-		</form>
-		<button>3</button>
+		</button>
 	</div>
 </aside>
 <aside id="modal2" class="modal" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="titlemodal" style="display:none;">
 	<div class="modal-wrapper" >
 		<div class="modal-header">
-			<img src="./assets/icons/arrow-left.svg" alt="arrow-left" class="arrow-left">
+			<button class="arrow-left"><img src="./assets/icons/arrow-left.svg" alt="arrow-left"></button>
 			<p id="titlemodal" >Ajout photo</p>
-			<img src="./assets/icons/xmark.svg" alt="xmark" class="xmark">
+			<button class="xmark xmark2"><img src="./assets/icons/xmark.svg" alt="xmark"></button>
 		</div>
 		<div class="insert-img">
+			<label for="insert-img" class="sr-only">Ajouter photo</label>
+			<input type="file" id="insert-img" name="insert-img" class="input-file" accept="image/png, image/jpeg" />
 			<img src="./assets/icons/insert.svg" alt="insert image" class="insert">
-			<div class="add-picture">+ Ajouter photo</div>
+			<button class="insert-imgBtn">+ Ajouter photo</button>
 			<p class="jpg">jpg png : 4 mo max</p>
 		</div>
 		<form>
@@ -104,8 +101,11 @@
 				<option value=""></option>
 				<option value="bars&restaurants">bars&restaurants</option>		
 			</select>
-			<input type="submit" value="Valider">
+			
 		</form>
+		<button class="submitBtn">
+			<input type="submit" value="Valider">
+		</button>
 	</div>
 </aside>
 

@@ -79,7 +79,7 @@ function showProjects (work,filter=false) {
     const showWorksInModal = document.querySelector(".modal-projects")
 
     const articleInModal = document.createElement("figure");
-    articleInModal.innerHTML = `<img src="${work.imageUrl}" max-width="77" max-height="103" alt="${work.title}">`
+    articleInModal.innerHTML = `<img src="${work.imageUrl}" width="77" height="103" alt="${work.title}"><button class="trashBtn"><img src="./assets/icons/trash.svg" alt="supprimer"></button>`
     showWorksInModal.appendChild(articleInModal);
 }
 
@@ -117,7 +117,7 @@ if(window.localStorage.getItem("token") !== null) {
     })
 
 
-    const focusableSelector = "button, a, input, textarea, img"
+    const focusableSelector = "button, a, input, textarea"
     let focusables = []
 
     function openModal1() {
@@ -144,13 +144,13 @@ if(window.localStorage.getItem("token") !== null) {
             modal.removeAttribute("aria-hidden")
             modal.setAttribute("aria-modal", true)
             console.log(openModal2)
-            closeModal1()
         })
+        closeModal1()
     }
     openModal2()
 
     function closeModal1() {
-        const closeModal = document.querySelector(".modal .xmark")
+        const closeModal = document.querySelector(".xmark1")
         closeModal.addEventListener("click", (event) => {
             event.preventDefault()
             const modal1=document.querySelector("#modal1")
@@ -166,13 +166,13 @@ if(window.localStorage.getItem("token") !== null) {
     closeModal1()
 
     function closeModal2() {
-        const closeModal = document.querySelector(".modal .xmark")
+        const closeModal = document.querySelector(".xmark2")
         closeModal.addEventListener("click", (event) => {
             event.preventDefault()
-            const modal1=document.querySelector("#modal2")
-            modal1.style.display = "none"
-            modal1.setAttribute("aria-hidden", true)
-            modal1.removeAttribute("aria-modal")
+            const modal=document.querySelector("#modal2")
+            modal.style.display = "none"
+            modal.setAttribute("aria-hidden", true)
+            modal.removeAttribute("aria-modal")
             const openModal = document.querySelector(".portfolioHeader div")
             openModal.removeEventListener("click", () => {    
             })
@@ -203,7 +203,8 @@ if(window.localStorage.getItem("token") !== null) {
 
     window.addEventListener("keydown", function (event) {
         if (event.key === "Escape" || event.key === "Esc") {
-            closeModal(event)
+            closeModal1(event)
+            closeModal2(event)
         }
         if (event.key === "Tab" && modal1 !== null) {
             focusInModal(event)
