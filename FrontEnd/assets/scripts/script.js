@@ -28,6 +28,16 @@ async function loadWorks() {
         article.appendChild(titleElement);
         */  
     });
+    const trashs = document.querySelectorAll(".trashBtn")
+    trashs.forEach((trash) => {
+        trash.addEventListener("click", (event) => {
+            event.preventDefault()
+            const workId = trash.dataset.id
+            removeProjectById(workId)
+            console.log(workId)
+        })
+    })
+    
     /*
     for (let i = 0; i < works.length; i++) {
        //show the first project by API
@@ -79,15 +89,12 @@ function showProjects (work,filter=false) {
     const showWorksInModal = document.querySelector(".modal-projects")
 
     const articleInModal = document.createElement("figure");
-    articleInModal.innerHTML = `<img src="${work.imageUrl}" width="77" height="103" alt="${work.title}"><button class="trashBtn"><img src="./assets/icons/trash.svg" alt="supprimer"></button>`
+    articleInModal.innerHTML = `<img src="${work.imageUrl}" width="77" height="103" alt="${work.title}"><button class="trashBtn" data-id="${work.id}"><img src="./assets/icons/trash.svg" alt="supprimer"></button>`
     showWorksInModal.appendChild(articleInModal);
     
-    const trash = document.querySelector(".trashBtn")
-    trash.addEventListener("click", (event) => {
-        removeProjectById()
-        console.log(trash)
-    })
+    
 }
+
 
 //add a function to reset the filters
 function resetFilter() {
@@ -135,6 +142,7 @@ function openModal1() {
         modal.setAttribute("aria-modal", true)
         console.log(openModal)
     })
+    
 }
 openModal1()
 
@@ -232,11 +240,13 @@ async function removeProjectById(id) {
       },
     })
     if (response.ok) {
-      const removeGallery = document.querySelector(".modal_projects")
-      removeGallery.innerHTML = ""
-      loadWorks()
-      console.log("Image supprimée avec succès");
+        const galleryProjects = document.querySelector(".gallery") 
+        galleryProjects.innerHTML = "" 
+        const modalProjects = document.querySelector(".modal-projects") 
+        modalProjects.innerHTML = "" 
+        loadWorks()
+        console.log("Image supprimée avec succès");
     } else {
-      alert("Erreur lors de la suppression de l'image");
+        alert("Erreur lors de la suppression de l'image");
     }
   }
