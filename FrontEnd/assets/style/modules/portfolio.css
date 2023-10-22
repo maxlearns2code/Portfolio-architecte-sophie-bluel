@@ -35,3 +35,18 @@
 	width: 585px;
 	margin-bottom: 30px;
 }
+.filters button {
+	font-family: 'Syne';
+	font-size: 16px;
+	font-weight: 700;
+	color: #1D6154;
+	min-width: 100px;
+	height: 37px;
+	background-color: white;
+	border-radius: 60px;
+	border: 1px solid #1D6154;
+}
+.filters .btnAll {
+	color: white;	
+	background-color: #1D6154;	
+}

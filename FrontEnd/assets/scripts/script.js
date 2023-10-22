@@ -131,80 +131,63 @@ if(window.localStorage.getItem("token") !== null) {
 const focusableSelector = "button, a, input, textarea"
 let focusables = []
 
-function openModal1() {
+function openModal() {
     const openModal = document.querySelector(".portfolioHeader div")
     openModal.addEventListener("click", (event) => {
         event.preventDefault()
-        const modal=document.querySelector("#modal1")
+        const modal=document.querySelector("#modal")
         focusables = Array.from(modal.querySelectorAll(focusableSelector))
         modal.style.display = null
         modal.removeAttribute("aria-hidden")
         modal.setAttribute("aria-modal", true)
         console.log(openModal)
-    })
-    
+    })    
 }
-openModal1()
+openModal()
 
-function openModal2() {
-    const openModal2 = document.querySelector(".addPictureBtn")
-    openModal2.addEventListener("click", (event) => {
-        event.preventDefault()
-        const modal=document.querySelector("#modal2")
-        focusables = Array.from(modal.querySelectorAll(focusableSelector))
-        modal.style.display = null
-        modal.removeAttribute("aria-hidden")
-        modal.setAttribute("aria-modal", true)
-        console.log(openModal2)
-    })
-    
-}
-openModal2()
-
-function closeModal1() {
-    const closeModal = document.querySelector(".xmark1")
-    closeModal.addEventListener("click", (event) => {
-        event.preventDefault()
-        const modal1=document.querySelector("#modal1")
-        modal1.style.display = "none"
-        modal1.setAttribute("aria-hidden", true)
-        modal1.removeAttribute("aria-modal")
-        const openModal = document.querySelector(".portfolioHeader div")
-        openModal.removeEventListener("click", () => {    
-        })
-        console.log(closeModal)
+function addProject() {
+    const addPictureBtn = document.querySelector(".addPictureBtn")    
+    addPictureBtn.addEventListener("click", (event) => {
+        const projectInModal = document.querySelector(".projectInModal")
+        projectInModal.style.display = "none"
+        const formAddProject = document.querySelector(".formAddProject")
+        formAddProject.style.display = null
+        backToModalInProject()        
     })
 }
-closeModal1()
+addProject()
 
-function closeModal2() {
-    const closeModal = document.querySelector(".xmark2")
-    closeModal.addEventListener("click", (event) => {
-        event.preventDefault()
-        const modal=document.querySelector("#modal2")
-        modal.style.display = "none"
-        modal.setAttribute("aria-hidden", true)
-        modal.removeAttribute("aria-modal")
-        const openModal = document.querySelector(".portfolioHeader div")
-        openModal.removeEventListener("click", () => {    
-        })
-        console.log(closeModal)
-    })
-}
-closeModal2()
-
-function backToModal1() {
+function backToModalInProject() {
     const arrowLeft = document.querySelector(".arrow-left")
     arrowLeft.addEventListener("click", (event) => {
-        event.preventDefault()
-        console.log(arrowLeft)
-    })
+        const projectInModal = document.querySelector(".projectInModal")
+        projectInModal.style.display = null
+        const formAddProject = document.querySelector(".formAddProject")
+        formAddProject.style.display = "none"
+    }) 
 }
-backToModal1()
+
+function closeModal() {
+    const closeModals = document.querySelectorAll(".xmark")
+    closeModals.forEach( (closeModal)=> {
+        closeModal.addEventListener("click", (event) => {
+            event.preventDefault()
+            const modal=document.querySelector("#modal")
+            modal.style.display = "none"
+            modal.setAttribute("aria-hidden", true)
+            modal.removeAttribute("aria-modal")
+            const openModal = document.querySelector(".portfolioHeader div")
+            openModal.removeEventListener("click", () => {    
+            })
+            console.log(closeModal)
+        })  
+    })    
+}
+closeModal()
 
 const focusInModal = function (event) {
     event.preventDefault()
-    let index = focusables.findIndex(f => f === modal1.querySelector(":focus"))
+    let index = focusables.findIndex(f => f === modal.querySelector(":focus"))
     if (event.shiftKey === true) {
         index--
     }
@@ -224,9 +207,9 @@ const focusInModal = function (event) {
 
 window.addEventListener("keydown", function (event) {
     if (event.key === "Escape" || event.key === "Esc") {
-        
+        closeModal(event)
     }
-    if (event.key === "Tab" && modal1 !== null) {
+    if (event.key === "Tab" && modal !== null) {
         focusInModal(event)
     }
 })
@@ -249,4 +232,4 @@ async function removeProjectById(id) {
     } else {
         alert("Erreur lors de la suppression de l'image");
     }
-  }
+}

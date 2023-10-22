@@ -66,48 +66,56 @@
 	</nav>
 </footer>
 
-<aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="titlemodal" style="display:none;">
+<aside id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="titlemodal" style="display:none;">
 	<div class="modal-wrapper" >
-		<div class="modal-header">
-			<p id="titlemodal" >Galerie photo</p>
-			<button class="xmark xmark1"><img src="./assets/icons/xmark.svg" alt="xmark"></button>
+		<div class="projectInModal" style="display:null;">
+			<div class="modal-header">
+				<p id="titleModal" >Gallerie</p>
+				<button class="xmark">
+					<img src="./assets/icons/xmark.svg" alt="xmark">
+				</button>
+			</div>			
+			<div class="modal-projects"></div>
+			<button class="submitBtn">
+				<input type="submit" value="Ajouter une photo" class="addPictureBtn">
+			</button>
 		</div>
-		<div class="modal-projects">
+		<div class="formAddProject" style="display:none;">
+			<div class="modal-header">
+				<button class="arrow-left">
+					<img src="./assets/icons/arrow-left.svg" alt="arrow-left">
+				</button>
+				<p id="titleModal" >Ajout photo</p>
+				<button class="xmark">
+					<img src="./assets/icons/xmark.svg" alt="xmark">
+				</button>
+			</div>
+			<form>
+				<div class="insert-img">
+					<label for="insert-img" class="label-file"></label>
+					<input type="file" id="insert-img" name="insert-img" class="input-file" accept="image/png, image/jpeg" />
+					<img src="./assets/icons/insert.svg" alt="insert image" class="insert">
+					<button class="insert-imgBtn">+ Ajouter photo</button>
+					<p class="jpg">jpg png : 4 mo max</p>
+				</div>
+				<div class="formInModal">
+					<label for="title">Titre</label>
+					<input type="text" name="title" id="title" class=" form-modal">
+					<label for="category-select">Catégorie:</label>
+					<select name="category" id="category-select" class=" form-modal">
+						<option value=""></option>
+						<option value="Bar & Restaurant">Bar & Restaurant </option>		
+					</select>
+					
+				</div>
+				<button class="submitBtn">
+					<input type="submit" value="Valider">
+				</button>
+			</form>
 		</div>
-		<button class="submitBtn">
-			<input type="submit" value="Ajouter une photo" class="addPictureBtn">
-		</button>
 	</div>
 </aside>
-<aside id="modal2" class="modal" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="titlemodal" style="display:none;">
-	<div class="modal-wrapper" >
-		<div class="modal-header">
-			<button class="arrow-left"><img src="./assets/icons/arrow-left.svg" alt="arrow-left"></button>
-			<p id="titlemodal" >Ajout photo</p>
-			<button class="xmark xmark2"><img src="./assets/icons/xmark.svg" alt="xmark"></button>
-		</div>
-		<div class="insert-img">
-			<label for="insert-img" class="label-file"></label>
-			<input type="file" id="insert-img" name="insert-img" class="input-file" accept="image/png, image/jpeg" />
-			<img src="./assets/icons/insert.svg" alt="insert image" class="insert">
-			<button class="insert-imgBtn">+ Ajouter photo</button>
-			<p class="jpg">jpg png : 4 mo max</p>
-		</div>
-		<form>
-			<label for="title">Titre</label>
-			<input type="text" name="title" id="title" class=" form-modal">
-			<label for="category-select">Catégorie:</label>
-			<select name="category" id="category-select" class=" form-modal">
-				<option value=""></option>
-				<option value="bars&restaurants">bars&restaurants</option>		
-			</select>
-			
-		</form>
-		<button class="submitBtn">
-			<input type="submit" value="Valider">
-		</button>
-	</div>
-</aside>
+	
 
 <script src="./assets/scripts/script.js"></script>
 </body>

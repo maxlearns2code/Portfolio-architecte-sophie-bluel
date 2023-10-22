@@ -8,45 +8,10 @@ input[type="submit"]{
 	text-align: center;
 	border-radius: 60px ;
 }
-
 button {
 	background-color: #FFFEF8;
 	border: none;
 }
-
-#modal2 input[type="submit"]{
-	background-color: #A7A7A7;
-}
-
-.filters button {
-	font-family: 'Syne';
-	font-size: 16px;
-	font-weight: 700;
-	color: #1D6154;
-	min-width: 100px;
-	height: 37px;
-	background-color: white;
-	border-radius: 60px;
-	border: 1px solid #1D6154;
-}
-
-.filters .btnAll {
-	color: white;	
-	background-color: #1D6154;	
-}
-
-.insert-imgBtn {
-	font-family: 'Syne';
-	font-size: 14px;
-	font-weight: 700;
-	color: #306685;
-	min-width: 173px;
-	height: 37px;
-	background-color: #CBD6DC;
-	border-radius: 60px;
-	border: 1px solid #CBD6DC;
-}
-
 .xmark {
     position: absolute;
     top: 20px;
@@ -57,20 +22,6 @@ button {
     top: 22px;
     left: 22px;
 }
-
-#contact input {
-	height: 50px;
-	font-size: 1.2em;
-	border: none;
-	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-}
-
-.modal-wrapper .submitBtn {
-    width: 400px;
-    margin: 20px;
-    border-top: 1px solid #B3B3B3;
-}
-
 .trashBtn {
     margin: 0;
     padding: 0;
@@ -81,32 +32,4 @@ button {
     right: 4px;
     border-radius: 2px;
     cursor: pointer;
-}
-
-#login input {
-	height: 50px;
-	font-size: 1.2em;
-	border: none;
-	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-}
-
-#login .alert button {
-	margin-top: 10px;
-	padding: 5px 15px 5px 15px;
-	background-color: red;
-	border: 1px solid red;
-	border-radius: 60px;
-	font-weight: 700;
-}
-
-.modal input {
-	width: 400px;
-	height: 50px;
-	font-size: 1.2em;
-	border: none;
-	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-}
-
-.modal input[type="submit"] {
-	width: 237px;
 }
