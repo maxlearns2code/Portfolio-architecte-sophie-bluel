@@ -233,3 +233,21 @@ async function removeProjectById(id) {
         alert("Erreur lors de la suppression de l'image");
     }
 }
+
+const input = document.getElementById('file-upload');
+const previewPhoto = () => {
+    const file = input.files;
+    if (file) {
+        const fileReader = new FileReader();
+        const preview = document.getElementById('file-preview');
+        fileReader.onload = function (event) {
+            preview.setAttribute('src', event.target.result);
+            const insertImgBtn = document.querySelector(".insert-imgBtn")
+            insertImgBtn.style.display = "none"
+            const insertImgText = document.querySelector(".insert-img p")
+            insertImgText.style.display = "none"
+        }
+        fileReader.readAsDataURL(file[0]);
+    }
+}
+input.addEventListener("change", previewPhoto);

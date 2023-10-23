@@ -99,7 +99,7 @@
 .label-file {
     position: absolute;
     top: 137px;
-    z-index: 2;
+    z-index: 1;
     width: 420px;
     height: 170px;
 }
@@ -138,4 +138,7 @@ figure {
 	background-color: #CBD6DC;
 	border-radius: 60px;
 	border: 1px solid #CBD6DC;
+}
+#file-preview {
+    width: 30%;
 }
