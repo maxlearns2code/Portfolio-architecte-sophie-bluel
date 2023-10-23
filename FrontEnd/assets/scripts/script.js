@@ -251,3 +251,36 @@ const previewPhoto = () => {
     }
 }
 input.addEventListener("change", previewPhoto);
+
+function addProjectModal() {
+    const form = document.querySelector("#form2")
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault()
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        await sendData(formData)
+        console.log(data)
+        if (response.ok) {
+            const galleryProjects = document.querySelector(".gallery") 
+            galleryProjects.innerHTML = "" 
+            const modalProjects = document.querySelector(".modal-projects") 
+            modalProjects.innerHTML = "" 
+            loadWorks()
+        }
+    })
+}
+addProjectModal()
+
+const sendData = async (formData) => {
+    const token = localStorage.getItem("token")
+    const response = await fetch("http://localhost:5678/api/works", {
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${token}`
+          },
+        body: formData
+    })
+    console.log(response)
+}
+
+
