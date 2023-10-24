@@ -139,6 +139,6 @@ figure {
 	border-radius: 60px;
 	border: 1px solid #CBD6DC;
 }
-#file-preview {
-    width: 30%;
+#file-preview {    
+    max-width: 30%;
 }
