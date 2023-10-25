@@ -241,10 +241,7 @@ async function removeProjectById(id) {
       },
     })
     if (response.ok) {
-        const galleryProjects = document.querySelector(".gallery") 
-        galleryProjects.innerHTML = "" 
-        const modalProjects = document.querySelector(".modal-projects") 
-        modalProjects.innerHTML = "" 
+        reinitializeProjects()
         loadWorks()
         console.log("Image supprimée avec succès");
     } else {
@@ -276,6 +273,22 @@ function addProjectModal() {
         e.preventDefault()
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
+        console.log(data)
+        let imageUrl = document.getElementById("file-upload").files[0];
+        let title = document.getElementById("title").value;
+        let categoryId = document.getElementById("category-select").value;
+        if(imageUrl == null){
+            alert("Veuillez choisir un image")
+            return; 
+        }
+        if(title == ""){
+            alert("Veuillez choisir un titre")
+            return;
+        }
+        if(categoryId == ""){
+            alert("Veuillez choisir une categorie")
+            return;
+        }        
         const token = localStorage.getItem("token")
         const response = await fetch("http://localhost:5678/api/works", {
             method: 'POST',
@@ -285,15 +298,20 @@ function addProjectModal() {
             body: formData
         })
         if (response.ok) {
-            const galleryProjects = document.querySelector(".gallery") 
-            galleryProjects.innerHTML = "" 
-            const modalProjects = document.querySelector(".modal-projects") 
-            modalProjects.innerHTML = "" 
+            reinitializeProjects()
             loadWorks()
-            console.log("Image ajoutée avec succès");
+            resetModal()
+            console.log("projet ajouté avec succès");
         } else {
-            alert("Erreur lors de l'ajout de l'image");
+            alert("Erreur lors de l'ajout du projet");
         }
     })
 }
 addProjectModal()
+
+function reinitializeProjects() {
+    const galleryProjects = document.querySelector(".gallery") 
+    galleryProjects.innerHTML = "" 
+    const modalProjects = document.querySelector(".modal-projects") 
+    modalProjects.innerHTML = "" 
+}
