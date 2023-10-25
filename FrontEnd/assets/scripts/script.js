@@ -176,6 +176,8 @@ function closeModal() {
             resetModal()
         })  
     })    
+    const modalWrapper = document.querySelector(".modal")
+    modalWrapper.addEventListener("click", resetModal)
 }
 closeModal()
 
