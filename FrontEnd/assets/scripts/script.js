@@ -35,8 +35,7 @@ async function loadWorks() {
             const workId = trash.dataset.id
             removeProjectById(workId)
         })
-    })
-    
+    })    
     /*
     for (let i = 0; i < works.length; i++) {
        //show the first project by API
@@ -89,11 +88,8 @@ function showProjects (work,filter=false) {
 
     const articleInModal = document.createElement("figure");
     articleInModal.innerHTML = `<img src="${work.imageUrl}" width="77" height="103" alt="${work.title}"><button class="trashBtn" data-id="${work.id}"><img src="./assets/icons/trash.svg" alt="supprimer"></button>`
-    showWorksInModal.appendChild(articleInModal);
-    
-    
+    showWorksInModal.appendChild(articleInModal);    
 }
-
 
 //add a function to reset the filters
 function resetFilter() {
@@ -107,23 +103,21 @@ function resetFilter() {
     })
 }
 
+//redirection after login
 if(window.localStorage.getItem("token") !== null) {
     const loginBtn = document.querySelector(".login")
-
+    //add button logout
     loginBtn.innerHTML = "logout";
-
+    //disabled the filters
     document.querySelector(".filters").style.display = "none";
-
+    //create mofification element
     const portfolioHeader = document.querySelector(".portfolioHeader")
-
     const elementsEdit = document.createElement("div")
     elementsEdit.innerHTML =`<img src="./assets/icons/edit.svg" alt="Modifier"><p>Modifier</p>`
     portfolioHeader.appendChild(elementsEdit)
-
     const openModal = document.querySelector(".portfolioHeader div")
-
     openModal.addEventListener("click", showModal) 
-    
+    //redirection after logout
     loginBtn.addEventListener('click', (e) => {
         e.preventDefault();
         window.localStorage.removeItem('token');
@@ -131,43 +125,44 @@ if(window.localStorage.getItem("token") !== null) {
     }) 
 }
 
+/*try to create focusable selector
 const focusableSelector = "button, a, input, textarea"
-let focusables = []    
+let focusables = []*/
 
+//show modal 
 function showModal() {    
     const modal=document.querySelector("#modal")
-    focusables = Array.from(modal.querySelectorAll(focusableSelector))
+    // focusables = Array.from(modal.querySelectorAll(focusableSelector))
     modal.style.display = null
     modal.removeAttribute("aria-hidden")
     modal.setAttribute("aria-modal", true)   
 }
 
+//add new project in portfolio
 const addPictureBtn = document.querySelector(".addPictureBtn")
-
 addPictureBtn.addEventListener("click", (e) => {
     addProject()    
 })
-
+//function to add new project
 function addProject() {    
     const projectInModal = document.querySelector(".projectInModal")
     projectInModal.style.display = "none"
     const formAddProject = document.querySelector(".formAddProject")
     formAddProject.style.display = null
 }
-
+// button to go back in modal
 const arrowLeft = document.querySelector(".arrow-left")
-
 arrowLeft.addEventListener("click", (e) => {
     backToModalInProject()
 }) 
-
+//function to go back
 function backToModalInProject() {    
     const projectInModal = document.querySelector(".projectInModal")
     projectInModal.style.display = null
     const formAddProject = document.querySelector(".formAddProject")
     formAddProject.style.display = "none"   
 }
-
+// close modal by clicking on the cross mark or outside the modal
 function closeModal() {
     const closeModals = document.querySelectorAll(".xmark")
     closeModals.forEach( (closeModal)=> {
@@ -181,14 +176,14 @@ function closeModal() {
         e.preventDefault()
         resetModal()
     })
+    //stop the close modal propagation 
     const modalWrapper = document.querySelector(".modal-wrapper")
     modalWrapper.addEventListener("click", (e) => {
         e.stopPropagation()
     })
-
 }
 closeModal()
-
+//function hide modal
 function resetModal() {
     const modal=document.querySelector("#modal")
     modal.style.display = "none"
@@ -202,7 +197,7 @@ function resetModal() {
     openModal.removeEventListener("click", () => {    
     })
 }
-
+/*
 const focusInModal = function (e) {
     e.preventDefault()
     let index = focusables.findIndex(f => f === modal.querySelector(":focus"))
@@ -222,16 +217,19 @@ const focusInModal = function (e) {
     console.log(index)
 
 }
-
+*/
+//reset modal with escape touch
 window.addEventListener("keydown", function (e) {
     if (e.key === "Escape" || e.key === "Esc") {
         resetModal(e)
     }
+    /*
     if (e.key === "Tab" && modal !== null) {
         focusInModal(e)
     }
+    */
 })
-
+//function to remove project
 async function removeProjectById(id) {
     const token = localStorage.getItem("token")
     const response = await fetch(`http://localhost:5678/api/works/${id}`, {
@@ -248,7 +246,7 @@ async function removeProjectById(id) {
         alert("Erreur lors de la suppression de l'image");
     }
 }
-
+//add preview picture in modal when we add a new project
 const input = document.getElementById('file-upload');
 const previewPhoto = () => {
     const file = input.files;
@@ -266,7 +264,7 @@ const previewPhoto = () => {
     }
 }
 input.addEventListener("change", previewPhoto);
-
+// add new project when the forms are complete
 function addProjectModal() {
     const form = document.querySelector("#form2")
     form.addEventListener("submit", async (e) => {
@@ -308,7 +306,7 @@ function addProjectModal() {
     })
 }
 addProjectModal()
-
+//function to reinitialize projects
 function reinitializeProjects() {
     const galleryProjects = document.querySelector(".gallery") 
     galleryProjects.innerHTML = "" 
