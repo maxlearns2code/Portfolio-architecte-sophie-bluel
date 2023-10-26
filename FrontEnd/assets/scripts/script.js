@@ -196,6 +196,15 @@ function resetModal() {
     const openModal = document.querySelector(".portfolioHeader div")
     openModal.removeEventListener("click", () => {    
     })
+    const filePreview = document.getElementById("file-preview")
+    filePreview.src = "./assets/icons/insert.svg";
+    const insertImgBtn = document.querySelector(".insert-imgBtn")
+    insertImgBtn.style.display = null
+    const insertImgText = document.querySelector(".insert-img p")
+    insertImgText.style.display = null
+    document.getElementById("title").value = '';
+    document.getElementById("category-select").selectedIndex = 0;
+    
 }
 /*
 const focusInModal = function (e) {
