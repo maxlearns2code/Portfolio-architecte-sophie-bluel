@@ -322,3 +322,15 @@ function reinitializeProjects() {
     const modalProjects = document.querySelector(".modal-projects") 
     modalProjects.innerHTML = "" 
 }
+//add a funtion to change the color of the button "valider" when the forms are ok
+const formInModal = document.querySelector(".formInModal")
+formInModal.addEventListener("input", changeColorValidBtn)
+function changeColorValidBtn() {
+    const validBtn = document.getElementById("validBtn")
+    let imageUrl = document.getElementById("file-upload")
+    let title = document.getElementById("title");
+    let categoryId = document.getElementById("category-select");
+    if ( imageUrl.files.length > 0 && title.value !== "" && categoryId.value !== "") {
+        validBtn.style.backgroundColor = "#1D6154";
+        }  
+}
